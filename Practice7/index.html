@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <!-- Нехорошая практика центрирования текста
   <style>
     h1 {
@@ -17,12 +18,27 @@
       justify-content: center;
       flex-direction: column;
     } 
+    .card button {
+      color: rgb(232, 121, 219);
+      background-color:aqua;
+      border-color: blue;
+    }
+    Можно оформлять стили самому, либоо воспользоваться готовыми стилями, которые написаны на SASS, просто подключаем библиотеку
   </style>
 </head>
 <body>
   <div class='card'>
   <h1 class='card_title'>Заголовок</h1>
-  <button class='card_button card_button_blue'>Нажми меня</button>
+  <button class='btn btn-dark'>Нажми меня</button>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img src="https://brightmagazine.ru/wp-content/uploads/2025/10/top-view-online-psychologist-concept-768x512.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Психологический потолок возможностей и как его пробить</h5>
+    <p class="card-text">Иногда в профессиональной сфере случаются парадоксы: неожиданное повышение по службе или новый более грандиозный проект приводит не к радости, а к тревоге, что все “слишком хорошо”.  А затем тут как тут появляются  сомнения в своих способностях, откладывание важных решений, ошибки. Оказывается, все дело в нашем внутреннем психологическом барьере, который возникает при достижении уровня успеха, превышающего тот, который мы, по нашему собственному мнению, заслуживаем. </p>
+    <a href="#" class="btn btn-primary">Читать далее</a>
+  </div>
 </div>
 
 </body>
