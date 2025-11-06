@@ -14,45 +14,49 @@
   <div class="row align-items-start" id='colum1'>
     <div class="col" style='font-weight: bold;'>
       Сумма
-    </div>
-    <div class="col" style='font-weight: bold;'>
-      Разность
-    </div>
-    <div class="col" style='font-weight: bold;'>
-      Умножение
-    </div>
-    <div class="col" style='font-weight: bold;'>
-      Деление
-    </div>
-  </div>
-  <div class="row align-items-start" id='colum2'>
-    <div class="col">
-      <div class="card" style="">
+        <div class="card" style="">
   <div class="card-body">
     <h5 class="card-title" id='summa'>Card title</h5>
   </div>
 </div>
     </div>
-    <div class="col">
+    <div class="col" style='font-weight: bold;'>
+      Разность
       <div class="card" style="">
   <div class="card-body">
     <h5 class="card-title" id='raz'>Card title</h5>
   </div>
 </div>
     </div>
-    <div class="col">
+    <div class="col" style='font-weight: bold;'>
+      Умножение
       <div class="card" style="">
   <div class="card-body">
     <h5 class="card-title" id='mult'>Card title</h5>
   </div>
 </div>
     </div>
-    <div class="col">
+    <div class="col" style='font-weight: bold;'>
+      Деление
       <div class="card" style="">
   <div class="card-body">
     <h5 class="card-title" id='div'>Card title</h5>
   </div>
 </div>
+    </div>
+  </div>
+  <div class="row align-items-start" id='colum2'>
+    <div class="col">
+
+    </div>
+    <div class="col">
+      
+    </div>
+    <div class="col">
+      
+    </div>
+    <div class="col">
+      
     </div>
   </div>
 </div>
@@ -67,15 +71,18 @@
   <script>
 
     let a=+prompt('Введите первое число');
+    if (isNaN(a)) {
+      a=+prompt('Введите первое число, а не строку');
+    } else alert('Молодец!');
     let b=+prompt('Введите второе число');
     let element1=document.querySelector('#summa');
-    element.innerHTML = a+b;
+    element1.innerHTML = a+b;
     let element2=document.querySelector('#raz');
-    element.innerHTML = a-b;
+    element2.innerHTML = a-b;
     let element3=document.querySelector('#mult');
-    element.innerHTML = a*b;
+    element3.innerHTML = a*b;
     let element4=document.querySelector('#div');
-    element.innerHTML = a/b;
+    element4.innerHTML = a/b;
     
   </script>
 
