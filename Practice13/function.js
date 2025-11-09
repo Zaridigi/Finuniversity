@@ -17,6 +17,7 @@
 // constructor()
 // console.log(a);
 //   }
+
 // Массивы
 
 let a= []
@@ -33,3 +34,6 @@ Phone:'855',
 age:33
 }
 console.log(b);
+
+let user=new UserActivation(5)
+console.log(typeof(user));
