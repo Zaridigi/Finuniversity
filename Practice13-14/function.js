@@ -35,5 +35,32 @@ age:33
 }
 console.log(b);
 
-let user=new UserActivation(5)
+
+  class User {
+constructor() {
+console.log('Это класс');
+this.a=null;
+  }
+}
+
+// Наследник класса:
+
+let user=new User(5) 
+//   a=5,
+//   function mult(a,b) {
+//     return a*b
+//   }
+// }
+
+// Тип большого User:
+
 console.log(typeof(user));
+
+// Это всe устаревшее - классы!
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const squares =  nums.map((num) => num*num)
+
+console.log(squares)
+
+// map - частая история, используем вместо for

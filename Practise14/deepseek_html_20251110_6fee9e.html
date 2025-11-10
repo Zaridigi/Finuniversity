@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка пользователя из JSON</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .user-card {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+        }
+        .user-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .contact-info {
+            background-color: #f0f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .info-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .info-item i {
+            width: 24px;
+            margin-right: 10px;
+            color: #667eea;
+        }
+        .badge-custom {
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            margin: 3px;
+        }
+        .section-title {
+            color: #495057;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <h1 class="text-center mb-4">Профиль пользователя</h1>
+                <div id="userCard" class="user-card card">
+                    <!-- Карточка будет заполнена через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JSON объект с информацией о пользователе
+        const userData = {
+            "user": {
+                "id": 12345,
+                "personalInfo": {
+                    "firstName": "Анна",
+                    "lastName": "Смирнова",
+                    "birthDate": "1992-07-22",
+                    "age": 31,
+                    "gender": "женский"
+                },
+                "contactInfo": {
+                    "email": "anna.smirnova@example.com",
+                    "phone": "+7 (912) 345-67-89",
+                    "address": {
+                        "city": "Екатеринбург",
+                        "street": "ул. Ленина",
+                        "building": "15",
+                        "apartment": "42"
+                    }
+                },
+                "professionalInfo": {
+                    "position": "Frontend разработчик",
+                    "company": "TechSolutions Inc.",
+                    "skills": ["JavaScript", "React", "Vue.js", "HTML/CSS", "Bootstrap", "Node.js", "TypeScript"],
+                    "experience": 6
+                },
+                "accountInfo": {
+                    "username": "anna_dev",
+                    "registrationDate": "2020-03-15",
+                    "lastLogin": "2023-10-28",
+                    "isActive": true,
+                    "isVerified": true
+                },
+                "socialLinks": {
+                    "github": "https://github.com/annadev",
+                    "linkedin": "https://linkedin.com/in/annasmirnova",
+                    "telegram": "@annasmirnova"
+                },
+                "about": "Опытный фронтенд разработчик с более чем 6-летним опытом создания современных веб-приложений. Увлекаюсь изучением новых технологий и методологий разработки."
+            }
+        };
+
+        // Функция для форматирования даты
+        function formatDate(dateString) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('ru-RU', options);
+        }
+
+        // Функция для создания карточки пользователя
+        function createUserCard(user) {
+            const userCard = document.getElementById('userCard');
+            
+            // Определяем полный адрес
+            const fullAddress = `${user.contactInfo.address.city}, ${user.contactInfo.address.street}, д. ${user.contactInfo.address.building}, кв. ${user.contactInfo.address.apartment}`;
+            
+            // Создаем HTML для навыков
+            const skillsHTML = user.professionalInfo.skills.map(skill => 
+                `<span class="badge bg-primary badge-custom">${skill}</span>`
+            ).join('');
+            
+            // Создаем HTML для социальных ссылок
+            const socialLinksHTML = `
+                <a href="${user.socialLinks.github}" class="btn btn-outline-dark btn-sm me-2" target="_blank">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+                <a href="${user.socialLinks.linkedin}" class="btn btn-outline-primary btn-sm me-2" target="_blank">
+                    <i class="bi bi-linkedin"></i> LinkedIn
+                </a>
+                <span class="btn btn-outline-info btn-sm">
+                    <i class="bi bi-telegram"></i> ${user.socialLinks.telegram}
+                </span>
+            `;
+            
+            // Собираем всю карточку
+            userCard.innerHTML = `
+                <div class="profile-header">
+                    ${user.accountInfo.isActive ? 
+                        '<span class="status-badge badge bg-success"><i class="bi bi-check-circle"></i> Активен</span>' : 
+                        '<span class="status-badge badge bg-secondary"><i class="bi bi-x-circle"></i> Неактивен</span>'
+                    }
+                    <div class="avatar">
+                        <img src="https://i.pravatar.cc/300?img=5" alt="Аватар пользователя">
+                    </div>
+                    <h2 class="mb-2">${user.personalInfo.firstName} ${user.personalInfo.lastName}</h2>
+                    <p class="mb-0">${user.professionalInfo.position} в ${user.professionalInfo.company}</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h4 class="section-title">Личная информация</h4>
+                            <div class="info-item">
+                                <i class="bi bi-person"></i>
+                                <strong>Имя пользователя:</strong> ${user.accountInfo.username}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-calendar-event"></i>
+                                <strong>Дата рождения:</strong> ${formatDate(user.personalInfo.birthDate)}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-gender-ambiguous"></i>
+                                <strong>Пол:</strong> ${user.personalInfo.gender}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <strong>Город:</strong> ${user.contactInfo.address.city}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="section-title">Контактная информация</h4>
+                            <div class="info-item">
+                                <i class="bi bi-envelope"></i>
+                                <strong>Email:</strong> ${user.contactInfo.email}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-telephone"></i>
+                                <strong>Телефон:</strong> ${user.contactInfo.phone}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-house"></i>
+                                <strong>Адрес:</strong> ${fullAddress}
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-award"></i>
+                                <strong>Опыт работы:</strong> ${user.professionalInfo.experience} лет
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="section-title">О себе</h4>
+                        <p class="card-text">${user.about}</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="section-title">Навыки</h4>
+                        <div class="d-flex flex-wrap">
+                            ${skillsHTML}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="section-title">Социальные сети</h4>
+                        <div class="d-flex flex-wrap">
+                            ${socialLinksHTML}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                        <div>
+                            <span class="badge ${user.accountInfo.isVerified ? 'bg-success' : 'bg-warning'}">
+                                <i class="bi ${user.accountInfo.isVerified ? 'bi-patch-check' : 'bi-hourglass-split'}"></i> 
+                                ${user.accountInfo.isVerified ? 'Аккаунт подтвержден' : 'Ожидает подтверждения'}
+                            </span>
+                        </div>
+                        <div>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar-check"></i> Зарегистрирован: ${formatDate(user.accountInfo.registrationDate)}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Создаем карточку при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            createUserCard(userData.user);
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
