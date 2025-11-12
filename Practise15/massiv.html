@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Неудобно:
+
+    // let a=[1, 2, 3];
+    // for (i=0; i<=2; i++) {
+    //   a[i]=a[i]*a[i];
+    // }
+    // console.log(a)
+
+    // Лучше так:
+
+    // let a=[1, 2, 3];
+    // b = a.forEach(i => i*i) 
+    // console.log(a);
+
+    // Не самый лучший вариант fetch, если сервер зависнет, , было бы здорово начать управлять этим потоком асинхронной функцией
+
+  //   fetch('http://jsonplaceholder.typicode.com/posts')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  // })
+    
+  fetch('http://jsonplaceholder.typicode.com/posts')
+.then((response) => response.json())
+.then((data) => {
+console.log(data);
+})
+
+  </script>
+</body>
+</html>
