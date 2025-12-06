@@ -1,0 +1,74 @@
+/* Подключаем современный шрифт без засечек */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.container {
+    display: grid;
+    border: 6px solid rgb(227, 149, 253);
+    border-radius: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    height: 400px;
+}
+
+/* Основные элементы - шрифт без засечек */
+.container > * {
+    border: 1px dashed;
+    border-radius: 10px;
+    background-color: rgba(82, 29, 179, 0.5);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Только шрифт */
+}
+
+/* Контейнер D */
+.D {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+    grid-column: 1;
+    grid-row: 2;
+    padding: 5px;
+    background-color: transparent !important;
+    border: none !important;
+    min-height: 120px;
+}
+
+/* Элементы внутри D - тоже без засечек */
+.D > * {
+    border: 1px dashed #000;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    min-height: 40px;
+    background-color: rgba(255, 0, 255, 0.7);
+    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Только шрифт */
+    font-weight: 600;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.empty {
+    background-color: rgba(255, 0, 255, 0.4);
+}
+
+/* Расположение элементов */
+.A { grid-column: 1; grid-row: 1; }
+.B { grid-column: 2; grid-row: 1; }
+.C { grid-column: 3; grid-row: 1; }
+.H { grid-column: 2; grid-row: 2; }
+.J { grid-column: 3; grid-row: 2; }
+
+.empty { grid-column: 1; grid-row: 1; }
+.E { grid-column: 2; grid-row: 1; }
+.F { grid-column: 1; grid-row: 2; }
+.G { grid-column: 2; grid-row: 2; }

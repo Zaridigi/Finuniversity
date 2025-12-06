@@ -1,0 +1,32 @@
+.container { /* Задаём свойства элементов HTML-класса «контейнер» */
+    display: grid;
+}
+
+.container {
+    border: 2px solid rgb(80, 145, 27); /* Обводим зелёной линией */
+    border-radius: 5px; /* Скругляем углы на 5 пикселей */
+    grid-template-rows: 3fr repeat(2, 2fr) 1fr;
+}
+
+/* Добавляем оформление элементам grid-контейнера: */
+.container * {
+    border: 1px dashed; /* Обводим чёрным пунктиром */
+    border-radius: 10px; /* Скругляем углы на 10 пикселей */
+    background-color: rgba(82, 29, 179, 0.5); /* Фон красим фиолетовым */
+    text-align: center; /* Контент размещаем в центре по горизонтали */
+}
+
+.A { grid-area: f; }
+.B { grid-area: i; }
+.C { grid-area: b; }
+.D { grid-area: o; }
+.E { grid-area: n; }
+
+.container {
+    display: grid;
+    grid-template-areas: "f f f f f i i i"
+                        "f f f f f i i i"
+                        "f f f f f i i i"
+                        "f f f f f o b b"
+                        "f f f f f n b b";
+}
