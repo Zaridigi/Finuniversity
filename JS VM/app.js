@@ -1,6 +1,6 @@
 let num = 42
 let firstName = 'Zarina'
-const isProgrammer = true
+// const isProgrammer = true
 
 /*Can do
 let $ = 'test'
