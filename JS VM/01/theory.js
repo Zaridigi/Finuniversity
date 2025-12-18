@@ -31,4 +31,12 @@ let x // undefined
 const fullAge = 29
 const birthYear  = 1992
 const currentYear =2022
-// > > >
+// > <  ≥  <=
+const isFullAge = currentYear - birthYear >= fullAge
+
+// console.log(isFullAge)
+
+const num1 = 42
+const num2 = '42'
+
+console.log(num1 === num2)
